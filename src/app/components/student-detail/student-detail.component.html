@@ -1,0 +1,72 @@
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+  <div class='card'>
+    <div class='card-header'>
+      {{pageTitle}}
+    </div>
+
+    <div class='card-body'>
+      <div class='row'>
+        <div class='col-md-8'>
+          <div class='row'>
+            <div class='col-md-4'><label for="name">Name</label></div>
+            <div class='col-md-8'><input type="text" pInputText id="name" formControlName="name" /></div>
+          </div>
+          <div class='row'>
+            <div class='col-md-4'><label for="lastName">Last Name</label></div>
+            <div class='col-md-8'><input type="text" pInputText id="lastName" formControlName="lastName" /></div>
+          </div>
+          <div class='row'>
+            <div class='col-md-4'><label for="emailAddress">Email Address</label></div>
+            <div class='col-md-8'><input type="email" pInputText id="emailAddress" formControlName="emailAddress" /></div>
+          </div>
+          <div class='row'>
+            <div class='col-md-4'><label for="documentType">Document Type</label></div>
+            <div class='col-md-8'><input type="text" pInputText id="documentType" formControlName="documentType" /></div>
+          </div>
+          <div class='row'>
+            <div class='col-md-4'><label for="documentNumber">Document Number</label></div>
+            <div class='col-md-8'><input type="text" pInputText id="documentNumber" formControlName="documentNumber" /></div>
+          </div>
+          <div class='row'>
+            <div class='col-md-4'><label for="birthDate">Birth Date</label></div>
+            <div class='col-md-8'><p-calendar id="birthDate" formControlName="birthDate" dateFormat="dd/mm/yy"></p-calendar></div>
+          </div>
+          <div class='row'>
+            <div class='col-md-4'><label for="sex">Sex</label></div>
+            <div class='col-md-8'><p-dropdown id="sex" formControlName="sex" [options]="[{ label: 'Male', value: true }, { label: 'Female', value: false }]"></p-dropdown></div>
+          </div>
+          <div class='row'>
+            <div class='col-md-4'><label for="phoneNumber">Phone Number</label></div>
+            <div class='col-md-8'><input type="text" pInputText id="phoneNumber" formControlName="phoneNumber" /></div>
+          </div>
+          <div class='row'>
+            <div class='col-md-4'><label for="nationality">Nationality</label></div>
+            <div class='col-md-8'><p-dropdown id="nationality" formControlName="nationality" [options]="countries"></p-dropdown></div>
+          </div>
+          <div class='row'>
+            <div class='col-md-4'><label for="photo">Photo</label></div>
+            <div class='col-md-8'>
+              <p-fileUpload
+                name="photo"
+                accept=".jpg,.png"
+                (onSelect)="onFileSelect($event)"
+                (onRemove)="onFileRemove()"
+                [maxFileSize]="1000000"
+                [showUploadButton]="false"
+                [showCancelButton]="false"
+                chooseLabel="Browse"
+                ></p-fileUpload>
+                <p-image [src]="studentForm.get('photo')?.value"
+                  *ngIf="studentForm.get('photo')?.value" alt="Image" width="250" [preview]="true"/>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='card-footer'>
+    <button pButton class="button-space" type="submit" label="Submit" [disabled]="studentForm.invalid"></button>
+    <button pButton type="button" label="Cancel" (click)="cancelEdit()"></button>
+  </div>
+  </div>
+</form>

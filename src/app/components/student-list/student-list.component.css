@@ -1,0 +1,29 @@
+th  {
+  color: #337AB7;
+}
+
+.bi-trash:hover {
+  color: red;
+}
+
+.bi-pencil:hover {
+  color: orange;
+}
+
+.icon-space {
+  margin-right: 10px;
+}
+
+.align-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.align-horizontal {
+  display: flex;
+  align-items: center;
+}
+
+.cursor-hand {
+  cursor: pointer;
+}
